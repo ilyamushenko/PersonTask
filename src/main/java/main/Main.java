@@ -10,7 +10,7 @@ import sorters.BubbleSort;
 
 public class Main {
     public static void main(String[] args) {
-        RepositoryForPerson repository = new RepositoryForPerson();
+        RepositoryForPerson repository = new RepositoryForPerson(new BubbleSort());
         repository.add(new Person(0, "Миша", new LocalDate(1998, 2, 2), Sex.Male));
         repository.add(new Person(1, "Денис", new LocalDate(1998, 8, 1), Sex.Male));
         repository.add(new Person(2, "Димка", new LocalDate(2000, 3, 2), Sex.Male));
@@ -23,7 +23,7 @@ public class Main {
         /*for (int i = 0; i < repository.size(); i++) {
             System.out.println(repository.get(i));
         }*/
-        repository.sort(new BubbleSort(), new ComparatorFio());
+        repository.sort(new ComparatorFio());
         for (int i = 0; i < repository.size(); i++) {
             System.out.println(repository.get(i));
         }

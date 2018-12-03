@@ -18,9 +18,10 @@ public class RepositoryForPerson {
         this.sorter = new InsertionSort();
     }
 
-    public RepositoryForPerson() {
+    public RepositoryForPerson(Sorter sorter) {
         this.arrayOfPersons = new Person[0];
         this.count = 0;
+        this.sorter = sorter;
     }
 
     public Person get(int index) {return arrayOfPersons[index];}
@@ -57,7 +58,7 @@ public class RepositoryForPerson {
         return tempRep;
     }
 
-    public void sort(Sorter sorter, Comparator<Person> comparator) {
+    public void sort(Comparator<Person> comparator) {
         sorter.sort(this, comparator);
     }
 
