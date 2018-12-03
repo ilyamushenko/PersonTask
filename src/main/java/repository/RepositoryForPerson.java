@@ -18,6 +18,11 @@ public class RepositoryForPerson {
         this.sorter = new InsertionSort();
     }
 
+    private RepositoryForPerson() {
+        this.count = 0;
+        this.arrayOfPersons = new Person[0];
+    }
+
     public RepositoryForPerson(Sorter sorter) {
         this.arrayOfPersons = new Person[0];
         this.count = 0;
