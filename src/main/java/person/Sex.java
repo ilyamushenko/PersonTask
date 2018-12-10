@@ -1,10 +1,8 @@
 package person;
 
 /**
- * Перечислимый тип для пола человека
- * Male - Мужской
- * Female - Женский
+ * Enumerated type for sex
  */
 public enum Sex {
-    Male, Female;
+    Male, Female
 }

@@ -1,19 +1,22 @@
 package sorters;
 
+import org.apache.log4j.Logger;
 import person.Person;
 import repository.RepositoryForPerson;
 
 import java.util.Comparator;
 
 /**
- * Класс для сортировки выбором
+ * Class fot selection sort
  */
 public class SelectionSort implements Sorter {
     /**
-     * Метод для сортировки выбором
-     * @param repository репозиторий, который мы хотим отсортировать
-     * @param comparator компоратор, который будет сортировать по определенным параметрам
+     * Method for selection sorting
+     * @param repository repository that we want to sort
+     * @param comparator comporator that will sort by specific parameters
      */
+    private static final Logger log = Logger.getLogger(SelectionSort.class);
+
     @Override
     public void sort(RepositoryForPerson repository, Comparator<Person> comparator) {
 
@@ -32,6 +35,10 @@ public class SelectionSort implements Sorter {
                 repository.set(min_i, tmp);
             }
         }
+    }
 
+    @Override
+    public String toString() {
+        return "Selection sorter";
     }
 }

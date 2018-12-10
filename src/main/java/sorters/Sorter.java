@@ -6,17 +6,19 @@ import repository.RepositoryForPerson;
 import java.util.Comparator;
 
 /**
- * Интерфейс для классов сортировки, который имеет один метод sort - собственно
- * он и выполняет сортиировку
- */
+  *Interface for sorting classes, which has one sort method - actually
+  * he does the sorting
+  */
 public interface Sorter {
     /**
-     * Метод для сортировки
-     * @param repository репозиторий, который мы хотим отсортировать
-     * @param comparator компоратор, который будет сортировать по определенным параметрам
+     * Method for sorting
+     * @param repository repository that we want to sort
+     * @param comparator comporator that will sort by specific parameters
      * @see comparators.ComparatorAge
      * @see comparators.ComparatorDateOfBirth
      * @see comparators.ComparatorFio
      */
     void sort(RepositoryForPerson repository, Comparator<Person> comparator);
+
+
 }

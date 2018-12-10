@@ -1,36 +1,31 @@
 package main;
 
-import checkers.CheckerPersonAge;
-import comparators.ComparatorFio;
-import org.joda.time.LocalDate;
-import person.Person;
-import person.Sex;
+import org.apache.log4j.Logger;
+import other.Utils;
 import repository.RepositoryForPerson;
-import sorters.BubbleSort;
+
+import java.util.Arrays;
 
 public class Main {
+    private static final Logger log = Logger.getLogger(Main.class);
     public static void main(String[] args) {
-        RepositoryForPerson repository = new RepositoryForPerson(new BubbleSort());
-        repository.add(new Person(0, "Миша", new LocalDate(1998, 2, 2), Sex.Male));
-        repository.add(new Person(1, "Денис", new LocalDate(1998, 8, 1), Sex.Male));
-        repository.add(new Person(2, "Димка", new LocalDate(2000, 3, 2), Sex.Male));
-        repository.add(new Person(3, "Саня", new LocalDate(1997, 8, 20), Sex.Male));
-        repository.add(new Person(4, "Игорь", new LocalDate(1997, 8, 20), Sex.Male));
-        repository.add(new Person(5, "Илья", new LocalDate(1998, 7, 1), Sex.Male));
-        repository.add(new Person(6, "Саша", new LocalDate(1999, 1, 24), Sex.Female));
-        //repository.delete(2);
-
-        /*for (int i = 0; i < repository.size(); i++) {
-            System.out.println(repository.get(i));
-        }*/
-        repository.sort(new ComparatorFio());
-        for (int i = 0; i < repository.size(); i++) {
-            System.out.println(repository.get(i));
-        }
-        System.out.println("//////////////////////////////////");
-        RepositoryForPerson rep = repository.find(new CheckerPersonAge(), 21);
-        for(int i = 0; i < rep.size(); i++) {
-            System.out.println(rep.get(i));
-        }
+        log.info("Run main with arguments: " + Arrays.toString(args));
+        RepositoryForPerson repository = new RepositoryForPerson();
+        log.info("Fill repository by Utils");
+        Utils.fillRepository(repository);
+        System.out.println(repository);
+//        log.info("Sort repository in main");
+//        repository.sort(new ComparatorFio());
+//        log.info("Print repository in main");
+//        for (int i = 0; i < repository.size(); i++) {
+//            System.out.println(repository.get(i));
+//        }
+//        System.out.println("//////////////////////////////////");
+//        log.info("Create new repository with people whom age = 21");
+//        RepositoryForPerson rep = repository.find(new CheckerAge(), 21);
+//        log.info("Print repository with people whom age = 21 in main");
+//        for(int i = 0; i < rep.size(); i++) {
+//            System.out.println(rep.get(i));
+//        }
     }
 }

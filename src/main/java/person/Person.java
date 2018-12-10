@@ -1,12 +1,15 @@
 package person;
 
 
+import org.apache.log4j.Logger;
 import org.joda.time.LocalDate;
 import org.joda.time.Years;
 
+import java.util.Objects;
+
 /**
- * Класс человека с полями:
- * id, ФИО, дата рождения, пол, возраст.
+ * Class person with fields:
+ * id, FIO, date of birth, sex, age.
  */
 public class Person {
     private int id;
@@ -14,13 +17,15 @@ public class Person {
     private LocalDate dateOfBirth;
     private Sex sex;
     private int age;
+    private static final Logger log = Logger.getLogger(Person.class);
+
 
     /**
-     * Конструктор для создания человека со следующими параметрами
-     * @param id  айдишник
-     * @param fio  ФИО
-     * @param dateOfBirth  Дата рождения
-     * @param sex  Пол
+     * Constructor to create a person with the following parameters
+     * @param id  identifier
+     * @param fio  FIO
+     * @param dateOfBirth  date of birth
+     * @param sex  sex
      */
     public Person(int id, String fio, LocalDate dateOfBirth, Sex sex) {
         this.id = id;
@@ -30,7 +35,7 @@ public class Person {
         this.age = this.getAge();
     }
 
-    /**Получить id человека
+    /**Get person's id
      *
      * @return id
      */
@@ -38,7 +43,7 @@ public class Person {
         return id;
     }
 
-    /**Установить у человека поле id
+    /**Set person's id
      *
      * @param id id
      */
@@ -46,73 +51,89 @@ public class Person {
         this.id = id;
     }
 
-    /**Получить возраст человека
+    /**Get person's age
      *
-     * @return Возраст человека
+     * @return age
      */
     public int getAge() {
         return Years.yearsBetween(dateOfBirth, new LocalDate()).getYears();
     }
 
-    /**Устанавливить возраст
+    /**Set person's age
      *
-     * @param age Количество лет
+     * @param age age
      */
     public void setAge(int age) {
         this.age = age;
     }
 
-    /**Получить ФИО
+    /**Get person's FIO
      *
-     * @return ФИО
+     * @return FIO
      */
     public String getFio() {
         return fio;
     }
 
-    /**Установить ФИО
+    /**Set person's FIO
      *
-     * @param fio ФИО
+     * @param fio FIO
      */
     public void setFio(String fio) {
         this.fio = fio;
     }
 
-    /**Получить дату рождения
+    /**Get person's date of birth
      *
-     * @return Дата рождения
+     * @return date of birth
      */
     public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
     /**
-     * Устанавливить дату рождения.
-     * @param dateOfBirth Дата рождения
+     * Set person's date of birth
+     * @param dateOfBirth date of birth
      */
     public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
-    /**Получить пол человека
+    /**Get person's sex
      * @see Sex
-     * @return Пол
+     * @return sex
      */
     public Sex getSex() {
         return sex;
     }
 
-    /**Установить пол человека
+    /**Set person's age
      *
-     * @param sex Пол
+     * @param sex sex
      */
     public void setSex(Sex sex) {
         this.sex = sex;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Person)) return false;
+        Person person = (Person) o;
+        return getId() == person.getId() &&
+                getAge() == person.getAge() &&
+                Objects.equals(getFio(), person.getFio()) &&
+                Objects.equals(getDateOfBirth(), person.getDateOfBirth()) &&
+                getSex() == person.getSex();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getFio(), getDateOfBirth(), getSex(), getAge());
+    }
+
     /**
-     *
-     * @return строковое представдение объекта Person
+     * @return String representation of the class person
      */
     @Override
     public String toString() {

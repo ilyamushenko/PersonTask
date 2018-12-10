@@ -1,21 +1,30 @@
 package comparators;
 
+import org.apache.log4j.Logger;
 import person.Person;
 
 import java.util.Comparator;
 
 /**
- * Класс, который сравнивает двух людей по дате рождения
+ * Class which compare two persons by date of birth
  */
 public class ComparatorDateOfBirth implements Comparator<Person> {
     /**
-     * Метод, который сравниевает двух людей по дате рождения
-     * @param o1  первый человек
-     * @param o2  второй человек
-     * @return значение. Если оно меньше 0, то o1 предшествует человеку o2 (o1 моложе o2)
+     * Method which compare two persons by date of birth
+     * @param o1  first person
+     * @param o2  second person
+     * @return value. if value < 0, then o1 preceded person o2
      */
+    private static final Logger log = Logger.getLogger(ComparatorDateOfBirth.class);
+
     @Override
     public int compare(Person o1, Person o2) {
+        log.info("Compare date of birth " + o1.getDateOfBirth() + " and " + o2.getDateOfBirth());
+
         return o1.getDateOfBirth().compareTo(o2.getDateOfBirth());
+    }
+    @Override
+    public String toString() {
+        return "Comparator by date of birth";
     }
 }
