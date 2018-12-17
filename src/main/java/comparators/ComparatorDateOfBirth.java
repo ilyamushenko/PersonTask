@@ -9,14 +9,15 @@ import java.util.Comparator;
  * Class which compare two persons by date of birth
  */
 public class ComparatorDateOfBirth implements Comparator<Person> {
+
+    private static final Logger log = Logger.getLogger(ComparatorDateOfBirth.class);
+
     /**
      * Method which compare two persons by date of birth
      * @param o1  first person
      * @param o2  second person
      * @return value. if value < 0, then o1 preceded person o2
      */
-    private static final Logger log = Logger.getLogger(ComparatorDateOfBirth.class);
-
     @Override
     public int compare(Person o1, Person o2) {
         log.info("Compare date of birth " + o1.getDateOfBirth() + " and " + o2.getDateOfBirth());

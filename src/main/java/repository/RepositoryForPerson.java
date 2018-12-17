@@ -137,7 +137,7 @@ public class RepositoryForPerson {
     public String toString() {
         String result = "Repository:\nPersons :\n";
         for(Person el : arrayOfPersons) {
-            result+= el + ",\n";
+            result += el + ",\n";
         }
         result += "Count of persons: " + count + "\n" + "Sorter: " + sorter;
         return result;
